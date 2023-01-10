@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jquery-day2-animateBox</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+      integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <style>
+      .box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        background-image: linear-gradient(to right, #cc2b5e, #753a88);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 100px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+
+    <script>
+        let state =true;
+
+    $(document).ready(function move() {
+        $(".box").animate({left:'500px'}).delay(1000).animate({top:'500'}).delay(1000).animate({left:'0'}).delay(1000).animate({top:'0'}).delay(1000);
+        move();
+    })
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userCard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<style>
+    .contianer{
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        margin: 100px auto 0 auto;
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    table,tr,td,th{
+        margin-top: 20px;
+        padding: 20px;
+        border: 1px solid #000;
+        border-collapse: collapse;
+    }
+    input{
+        margin: 10px;
+    }
+    #tableContent{
+        border-top: 1px solid;
+        padding-top: 20px;
+    }
+</style>
+<body>
+    <div class="contianer">
+        <h2>Add New Person</h2>
+        <div class="nameDiv">
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name">
+        </div>
+        <div class="ageDiv">
+            <label for="age">Email: </label>
+            <input type="text" name="age" id="age">
+        </div>
+        <button id="btn">Add new Person</button>
+        <h2 id="tableContent">Persons List</h2>
+        <div class="searchDiv">
+            <input type="text" name="search" id="search" placeholder="Search..." autocomplete="off">
+            <button id="sBtn">Search</button>
+        </div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Delete</th>
+            </tr>
+
+        </table>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#btn").on("click", function() {
+                if($("#name").val() != "" && $("#email").val() != "") {
+                    var nm = $("#name").val();
+                    var ag = $("#age").val();
+                    $("table").append(`<tr><td>${nm}</td><td>${ag}</td><td><button type="button" class="delete">delete</button></td></tr>`)
+                }
+                $(".delete").click(function() {
+                    $(this).parent().parent().remove();
+            })
+                $("#sBtn").click(function(event) {
+                    $("table tr").each(function() {
+                    for(let i=0; i<$("table tr").length; i++) {
+                        if($("table tr")[i].innerHTML.includes($("#search").val())==false){
+                            $("table tr")[i].remove();
+                        }
+                        // console.log($("table tr")[i]);
+                    };
+                    }
+                    
+                )})
+                
+
+            })
+            // $("#search").change(function() {
+            //     if($("#search").val() != "") {
+            //         $("table tr").each(function() {
+            //         for(let i=0; i<$("table tr").length; i++) {
+            //             if($("table tr")[i].innerHTML.includes($("#search").val())==false){
+            //                 $("table tr")[i].css("display","block");
+            //             }
+            //             // console.log($("table tr")[i]);
+            //         };
+            //         })
+            //     }
+            // })
+            
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery-day2-font-resizer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            margin: 200px auto 0 auto;
+            text-align: center;
+        }
+        .buttons{
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button{
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            border: none;
+            margin: 5px;
+            background-color: lightgrey;
+            font-size: 20px;
+        }
+        button:hover{
+            background-color: grey;
+            cursor: pointer;
+        }
+        #text{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="text">Lorem ipsum dolor sit amet.</h1>
+        <div class="buttons">
+            <button id="decrease">-</button>    
+            <button id="increase">+</button>
+        </div>
+        <h5 id="limit"></h5>
+        
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // console.log(parseInt($("#text").css("font-size")));
+                
+                $("#increase").click(function() {
+                    if(parseInt($("#text").css("font-size")) < 50){
+                        $("#limit").text("");
+                        $("#text").animate({"font-size":"+=5px"})
+                    }else{
+                        $("#limit").text("Reached Maximum").css("color","red");
+                    }
+                })
+
+                $("#decrease").click(function() {
+                if(parseInt($("#text").css("font-size")) > 10){
+                    $("#limit").text("");
+                    $("#text").animate({"font-size":"-=5px"});
+                }else{
+                    $("#limit").text("Reached Minimum").css("color","red");
+                }
+            })
+           
+        })
+    </script>
+</body>
+</html>
